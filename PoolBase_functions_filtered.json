@@ -1,0 +1,10 @@
+{
+  "/Users/nostrowski/Desktop/Octane/octane-datasets/Code4rena/Sherlock/contracts/facets/PoolBase.sol": [
+    {
+      "rule": "GenericGrep",
+      "tag": "match-function: PoolBase.bps",
+      "info": "\n  function bps() internal pure returns (IERC20 rt) {\n    // These fields are not accessible from assembly\n    bytes memory array = msg.data;\n    uint256 index = msg.data.length;\n\n    // solhint-disable-next-line no-inline-assembly\n    assembly {\n      // Load the 32 bytes word from memory with the address on the lower 20 bytes, and mask those.\n      rt := and(mload(add(array, index)), 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n  }",
+      "loc": [432, 2, 442, 2]
+    }
+  ]
+}

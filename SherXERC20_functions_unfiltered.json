@@ -1,0 +1,26 @@
+{
+  "/Users/nostrowski/Desktop/Octane/octane-datasets/Code4rena/Sherlock/contracts/facets/PoolBase.sol": [
+    {
+      "rule": "GenericGrep",
+      "tag": "match-function: PoolBase.payOffDebtAll",
+      "info": "\n  function payOffDebtAll(IERC20 _token) external override {\n    baseData();\n    LibPool.payOffDebtAll(_token);\n  }",
+      "loc": [375, 2, 378, 2]
+    }
+  ],
+  "/Users/nostrowski/Desktop/Octane/octane-datasets/Code4rena/Sherlock/contracts/interfaces/IPoolBase.sol": [
+    {
+      "rule": "GenericGrep",
+      "tag": "match-function: IPoolBase.payOffDebtAll",
+      "info": "\n  function payOffDebtAll(IERC20 _token) external;",
+      "loc": [286, 2, 286, 48]
+    }
+  ],
+  "/Users/nostrowski/Desktop/Octane/octane-datasets/Code4rena/Sherlock/contracts/libraries/LibPool.sol": [
+    {
+      "rule": "GenericGrep",
+      "tag": "match-function: LibPool.payOffDebtAll",
+      "info": "\n  function payOffDebtAll(IERC20 _token) external {\n    PoolStorage.Base storage ps = PoolStorage.ps(_token);\n    uint256 blocks = block.number.sub(ps.totalPremiumLastPaid);\n\n    uint256 totalAccruedDebt;\n    for (uint256 i = 0; i < ps.protocols.length; i++) {\n      totalAccruedDebt = totalAccruedDebt.add(_payOffDebt(ps, ps.protocols[i], blocks));\n    }\n    // move funds to the sherX etf\n    ps.sherXUnderlying = ps.sherXUnderlying.add(totalAccruedDebt);\n    ps.totalPremiumLastPaid = uint40(block.number);\n  }",
+      "loc": [84, 2, 95, 2]
+    }
+  ]
+}
